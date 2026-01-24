@@ -1,0 +1,31 @@
+.cartWrapper{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.cartQuantity{
+    position:absolute;
+    top: -6px;
+    right: -6px;
+
+    min-width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ff4747;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+
+    border-radius: 50%;
+    line-height: 1;
+}
+
+.cartWrapper:hover{
+    transform: scale(1.1);
+}
