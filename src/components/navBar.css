@@ -1,0 +1,8 @@
+.nav-container{
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
