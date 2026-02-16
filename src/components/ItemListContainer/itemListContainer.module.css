@@ -1,21 +1,15 @@
-.itemsContainer {
-    display: flex;
-    margin: 0;
-    margin-top: 60px;
-    padding: 1rem;
-    min-height: calc(100vh - 60px);
+.infoPage{
+    text-align: left;
+    width: 100%;
 }
-
-.propContainer {
-    display: flex;
-    margin: auto;
-}
-.title {
+.title{
+    padding-left: 20px;
+    margin-bottom: 20px;
     color: rgb(5, 91, 5);
-    transition: all .5s ease;
-    
 }
-.title:hover{
-    text-shadow: 10px 10px 10px rgb(192, 192, 192);
-    transform: scale(1.5);
+.cardsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }

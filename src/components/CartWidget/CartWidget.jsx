@@ -1,5 +1,5 @@
 import styles from "./cartWidget.module.css";
-import { CartIcon } from "../../shared/Icons";
+import { CartIcon } from "../../shared/components/Icons";
 
 export function CartWidget() {
     return (
