@@ -23,6 +23,7 @@ El objetivo principal fue aplicar los conocimientos adquiridos en React, incluye
 - ☁️ Integración con Firebase Firestore
     - Lectura de productos
     - Generación de órdenes de compra
+    - Control de stock de productos comrprados
 
 ---
 
@@ -34,6 +35,7 @@ El objetivo principal fue aplicar los conocimientos adquiridos en React, incluye
 - Firebase (Firestore)
 - CSS Modules
 - SweetAlert2
+- React Spinners
 
 ---
 
@@ -44,7 +46,7 @@ Seguí estos pasos para correr el proyecto en tu entorno local:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
+git clone https://github.com/Jaichino/react-coder.git
 ```
 
 ### 2. Acceder al directorio del proyecto
@@ -70,3 +72,4 @@ npm run dev
 ## Autor
 
 Aichino, Juan Ignacio
+Contacto: aichinojuani@gmail.com

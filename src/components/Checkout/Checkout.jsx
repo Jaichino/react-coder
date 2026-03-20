@@ -5,7 +5,13 @@ import { CartContext } from "../../context/CartContext";
 import { PageLayout } from "../PageLayout/PageLayout";
 import { Button } from "../../shared/components/Button/Button";
 import { db } from "../../services/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { 
+    collection, 
+    addDoc, 
+    doc, 
+    getDoc, 
+    writeBatch 
+} from "firebase/firestore";
 import Swal from "sweetalert2";
 
 export function Checkout() {
@@ -59,6 +65,9 @@ export function Checkout() {
         return Object.keys(newErrors).length === 0;
     }
 
+    // ---------------- //
+    // --- Handlers --- //
+    // ---------------- //
     
     // --- Creación de orden --- // 
     async function handleSubmit(e) {
@@ -73,6 +82,47 @@ export function Checkout() {
         } 
 
         try {
+
+            // --- Se crea batch para agrupar operaciones en Firestore ---
+            const batch = writeBatch(db);
+
+            // --- Lista para agregar si algun producto está sin stock ---
+            const outOfStock = [];
+
+            for (const prod of cart) {
+                // --- Se obtiene la información de cada producto del carrito ---
+                const productRef = doc(db, 'productos', prod.id);
+                const product =  await getDoc(productRef);
+                const productData = product.data();
+
+                // --- Si hay stock, se actualiza ---
+                if (productData.stock >= prod.quantity) {
+                    batch.update(productRef, {
+                        stock: productData.stock - prod.quantity
+                    });
+                }
+                else {
+                    // --- No hay stock ---
+                    outOfStock.push({
+                        id: prod.id,
+                        name: productData.name
+                    });
+                }
+            }
+
+            if (outOfStock.length > 0){
+                Swal.fire({
+                    title: "Stock Insuficiente",
+                    text: "Algunos productos no tienen stock disponible",
+                    icon: "warning",
+                    timer: 2000
+                });
+
+                setIsLoading(false);
+                return;
+            }
+
+            // --- Creación de orden ---
             const order = {
                 buyer: formData,
                 items: cart,
@@ -82,6 +132,10 @@ export function Checkout() {
             const ordersRef = collection(db, "orders");
             const docRef = await addDoc(ordersRef, order);
 
+            // --- Se ejecuta actualización ---
+            await batch.commit();
+
+            // --- Se muestra mensaje de exito ---
             Swal.fire({
                 title: "Compra realizada exitosamente!",
                 text: `Su número de orden es: ${docRef.id}`,

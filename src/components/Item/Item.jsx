@@ -1,7 +1,5 @@
 import styles from "./item.module.css";
-
 import { Link } from "react-router-dom";
-
 import buttonStyle from "../../shared/components/Button/button.module.css";
 
 

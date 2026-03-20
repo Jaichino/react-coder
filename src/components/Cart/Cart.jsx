@@ -8,7 +8,6 @@ import { Button } from "../../shared/components/Button/Button";
 import { db } from "../../services/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import Swal from 'sweetalert2';
-import { toLower } from "firebase/firestore/pipelines";
 import { Link } from "react-router-dom";
 
 export function Cart() {
@@ -99,6 +98,7 @@ export function Cart() {
     // -------------- //
 
     return(
+        
         <PageLayout>
             
             <h1 className={styles.title}>Tu carrito</h1>
@@ -113,14 +113,12 @@ export function Cart() {
                                 {productDetails.map(prod => (
                                     <div key={prod.id} className={styles.cartItem}>
                                         
-                                        {/* Imagen */}
                                         <img 
                                             src={prod.img} 
                                             alt={prod.name} 
                                             className={styles.image}
                                         />
 
-                                        {/* Info */}
                                         <div className={styles.info}>
                                             <h2>{prod.name}</h2>
                                             <p className={styles.price}>${prod.price}</p>
@@ -129,7 +127,6 @@ export function Cart() {
                                             </p>
                                         </div>
 
-                                        {/* Acciones */}
                                         <div className={styles.actions}>
                                             <button 
                                                 className={styles.deleteBtn}
@@ -143,7 +140,6 @@ export function Cart() {
                                 ))}
                             </div>
 
-                            {/* Footer carrito */}
                             <div className={styles.cartFooter}>
                                 <h2>Total: ${total}</h2>
 
@@ -156,9 +152,7 @@ export function Cart() {
                                     </Button>
 
                                     <Link to={"/checkout"}>
-                                        <Button
-                                            onClick={() => console.log("Finalizar compra")}
-                                        >
+                                        <Button>
                                             Finalizar compra
                                         </Button>
                                     </Link>
