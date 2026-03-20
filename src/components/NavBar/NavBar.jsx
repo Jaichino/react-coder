@@ -1,9 +1,15 @@
 import styles from "./navBar.module.css";
+import { Link } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget";
 import logo from "../../assets/logo.ico";
-import { Link } from "react-router-dom";
+
 
 export function NavBar() {
+    
+    // -------------- //
+    // --- Render --- //
+    // -------------- //
+    
     return (
         <header>
             <nav className={styles.navContainer}>
@@ -21,7 +27,7 @@ export function NavBar() {
                     <Link className={styles.navLink} to={"/category/Bags"} >Bolsos</Link>
 
                     {/* Componente de Carrito dentro de NavBar */}
-                    <CartWidget/>
+                    <CartWidget />
 
                 </div>
         

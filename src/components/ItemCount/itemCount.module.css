@@ -1,0 +1,11 @@
+.itemCountContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.itemCountDisplay{
+    font-weight: 600;
+    font-size: 20px;
+}

@@ -9,3 +9,10 @@
     width: 100%;
     background-color: white;
 }
+.loaderWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+    width: 100%;
+}

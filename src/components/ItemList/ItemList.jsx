@@ -2,6 +2,10 @@ import { Item } from "../Item/Item";
 
 export function ItemList({items}) {
     
+    // -------------- //
+    // --- Render --- //
+    // -------------- //
+    
     return (
         <>
             {items.map((item) => (

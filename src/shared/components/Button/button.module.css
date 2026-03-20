@@ -9,8 +9,22 @@
     font-weight: 600;
     display: flex;
     text-decoration: none;
+    justify-content: center;
 }
-
 .btn:hover{
     opacity: .8;
+}
+.btn:disabled{
+    background-color: #838181;
+    cursor: not-allowed;
+}
+.btn:disabled:hover{
+    opacity: 1;
+}
+
+.red {
+    background-color: rgb(241, 62, 62);
+}
+.lightgreen{
+    background-color: rgb(29, 167, 29);
 }

@@ -1,8 +1,43 @@
 import styles from "./itemDetail.module.css";
-import { Button } from "../../shared/components/Button/Button";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../../shared/components/Button/Button";
+import { ItemCount } from "../ItemCount/ItemCount";
+import { CartContext } from "../../context/CartContext";
+import Swal from 'sweetalert2'
 
 export function ItemDetail({detail}) {
+
+    // --- Se guarda la cantidad de items seleccionados en ItemCount --- //
+    const [itemsQuantity, setItemsQuantity] = useState(0);
+
+    // --- Estado para ocultar ItemCount --- //
+    const [isAdded, setIsAdded] = useState(false); 
+
+    // --- Se llama Contexto --- //
+    const { cart, handleAddToCart } = useContext(CartContext);
+
+    // ---------------- //
+    // --- Handlers --- //
+    // ---------------- //
+
+    // --- Handler para agregar producto al carrito --- //
+    function handleAddProduct() {
+        // --- Se muestra mensaje ---
+        Swal.fire({
+            title: "Productos",
+            text: "Producto agregado al carrito",
+            icon:"success",
+            timer:2000,
+            showConfirmButton: false
+        });
+
+        // --- Se agrega producto al carrito ---
+        handleAddToCart(detail, itemsQuantity);
+
+        // --- Se setea isAdded para ocultar ItemCount ---
+        setIsAdded(true);
+    }
 
     return(
         <>  
@@ -22,23 +57,47 @@ export function ItemDetail({detail}) {
 
                 <p className={styles.productPrice}>$ {detail.price}</p>
 
-                <p className={styles.productStock}>
-                    Stock: {detail.stock} {detail.stock === 1 ? 'Unidad' : 'Unidades'}
-                </p>
+                {/* Si el producto está sin stock, no se renderiza detalle */}
+                {detail.stock > 0 && 
+                    <p className={styles.productStock}>
+                        Stock: {detail.stock} {detail.stock === 1 ? 'Unidad' : 'Unidades'}
+                    </p>
+                }
 
-                {detail.stock < 5 && 
-                    <span className={styles.lastUnits}>
-                        ¡Ultimas Unidades! Aprovecha y comprá ahora.
-                    </span>}
-        
-                {/* Aca luego se renderiza el contador ItemCount */}
+                {/* Si el producto está sin stock, no se renderiza ItemCount y se muestra mensaje */}
+                {detail.stock === 0
+                ?   <span className={styles.lastUnits}>
+                        ¡Sin Stock!
+                    </span>
+                
+                :   <>
+                        {detail.stock < 5 && 
+                            <span className={styles.lastUnits}>
+                                ¡Ultimas Unidades! Aprovecha y comprá ahora.
+                            </span>
+                        }
 
-                <div className={styles.buttonContainer}>
-                    <Button>
-                        Agregar al carrito
-                    </Button>
-                </div>
-
+                        {isAdded 
+                            ? 
+                                <Link to="/cart">
+                                    <Button>Ir al carrito</Button>
+                                </Link>
+                            :
+                                <div className={styles.buttonContainer}>
+                                    <ItemCount
+                                        productStock={detail.stock}
+                                        onAdd={(qty) => setItemsQuantity(qty)}
+                                    />
+                                    <Button
+                                        disabled={itemsQuantity === 0}
+                                        onClick={handleAddProduct}
+                                    >
+                                        Agregar al carrito
+                                    </Button>
+                                </div>
+                        }
+                    </>
+                }
             </div>
         </>
     );

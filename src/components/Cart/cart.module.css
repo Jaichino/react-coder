@@ -1,0 +1,109 @@
+.detailContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: 1000px;
+    width: 100%;
+    background-color: white;
+}
+.loaderWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 130px);
+    width: 100%;
+}
+.title {
+    margin-bottom: 20px;
+}
+
+/* CONTENEDOR GENERAL */
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* CARD */
+.cartItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease;
+    min-width: 800px;
+}
+
+.cartItem:hover {
+    transform: translateY(-2px);
+}
+
+
+.image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.info h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+.price {
+    font-weight: bold;
+    margin-top: 4px;
+}
+.quantity {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    border: none;
+    color: #e53935;
+    cursor: pointer;
+    font-weight: 500;
+}
+.deleteBtn:hover {
+    text-decoration: underline;
+}
+
+.cartFooter {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 24px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footerButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+}

@@ -3,12 +3,19 @@ import styles from "./button.module.css";
 export function Button({
     children,
     onClick,
-    className = styles.btn,
+    className = "",
+    color,
+    disabled
 }) { 
 
     return (
         <button
-            className={className}
+            disabled={disabled}
+            className={`
+                ${styles.btn}
+                ${color ? styles[color] : ""}
+                ${className}
+            `}
             onClick={onClick}
         >
             {children}
