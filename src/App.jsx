@@ -5,7 +5,7 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetail
 import { ErrorPage } from "./components/ErrorPage/ErrorPage"
 import { CartProvider } from "./context/CartContext";
 import { Cart } from "./components/Cart/Cart";
-import { Checkout } from "./components/CheckOut/CheckOut"
+import { Checkout } from "./components/Checkout/Checkout"
 
 function App() {
 

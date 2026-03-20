@@ -39,6 +39,14 @@ El objetivo principal fue aplicar los conocimientos adquiridos en React, incluye
 
 ---
 
+## 🚀 Despliegue
+
+La aplicación fue desplegada utilizando Vercel. El link de acceso a la misma es el siguiente:
+
+[Ver proyecto](https://mi-app.vercel.app)
+
+---
+
 ## ⚙️ Instalación y uso
 
 Seguí estos pasos para correr el proyecto en tu entorno local:
